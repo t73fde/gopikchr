@@ -1,3 +1,3 @@
-module github.com/gopikchr/gopikchr
+module github.com/t73fde/gopikchr
 
-go 1.17
+go 1.19

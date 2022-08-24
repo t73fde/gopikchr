@@ -1,4 +1,5 @@
 %include {
+//lint:file-ignore *,U1000 Ignore all unused code, it's generated
 /*
 ** Zero-Clause BSD license:
 **
@@ -2079,7 +2080,6 @@ func pik_txt_vertical_layout(pObj *PObj) {
   } else {
     allSlots := int16(0)
     var aFree [5]int16
-    var iSlot int
     /* If there is more than one TP_ABOVE, change the first to TP_ABOVE2. */
     for j, mJust, i := 0, int16(0), n-1; i>=0; i-- {
       if aTxt[i].eCode&TP_ABOVE != 0 {
@@ -2114,13 +2114,12 @@ func pik_txt_vertical_layout(pObj *PObj) {
     if n==2 && ((aTxt[0].eCode|aTxt[1].eCode)&TP_JMASK)==(TP_LJUST|TP_RJUST) {
       /* Special case of two texts that have opposite justification:
       ** Allow them both to float to center. */
-      iSlot = 2
       aFree[0] = TP_CENTER
 			aFree[1] = TP_CENTER
     } else {
       /* Set up the arrow so that available slots are filled from top to
       ** bottom */
-      iSlot = 0
+      iSlot := 0
       if n>=4 && (allSlots & TP_ABOVE2)==0 { aFree[iSlot] = TP_ABOVE2; iSlot++ }
       if (allSlots & TP_ABOVE)==0 { aFree[iSlot] = TP_ABOVE; iSlot++ }
       if (n&1)!=0 { aFree[iSlot] = TP_CENTER; iSlot++ }
@@ -5013,16 +5012,15 @@ func (p *Pik) pik_tokenize(pIn *PToken, pParser *yyParser, aParam []PToken) {
 ** and should be released by the caller.
 */
 func Pikchr(
-	zString string,     /* Input PIKCHR source text.  zero-terminated */
+  zText []byte,     /* Input PIKCHR source text.  zero-terminated */
   zClass string,    /* Add class="%s" to <svg> markup */
   mFlags uint,      /* Flags used to influence rendering behavior */
   pnWidth *int,     /* Write width of <svg> here, if not NULL */
   pnHeight *int,    /* Write height here, if not NULL */
-) string {
+) []byte {
 	s := Pik{}
   var sParse yyParser
 
-	zText := []byte(zString)
 	s.sIn.n = len(zText)
 	s.sIn.z = append(zText, 0)
   s.eDir = DIR_RIGHT
@@ -5049,7 +5047,7 @@ func Pikchr(
   }
   if pnWidth != nil { if s.nErr != 0 {*pnWidth = -1} else { *pnWidth = s.wSVG } }
   if pnHeight != nil { if s.nErr != 0 {*pnHeight = -1} else { *pnHeight = s.hSVG } }
-  return s.zOut.String()
+  return s.zOut.Bytes()
 }
 
 // #if defined(PIKCHR_FUZZ)

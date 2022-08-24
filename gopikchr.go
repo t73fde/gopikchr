@@ -5,12 +5,12 @@ package gopikchr
 import (
 	"errors"
 
-	"github.com/gopikchr/gopikchr/internal"
+	"github.com/t73fde/gopikchr/internal"
 )
 
 // Convert converts a pikchr program into SVG, or returns an error
 // message.
-func Convert(input string, options ...Option) (output string, width int, height int, err error) {
+func Convert(input []byte, options ...Option) (output []byte, width int, height int, err error) {
 	conf := &config{}
 	for _, o := range options {
 		o(conf)

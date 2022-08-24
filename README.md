@@ -1,3 +1,15 @@
+# t73fde/gopikchr
+This is a fork of gopikchr/gopikchr to use it within [Zettelstore](https://zettelstore.de).
+
+Main changes:
+
+* `Convert()` and `internal.Pikchr` use byte slices instead of strings
+* Add comment to make "staticcheck" to ignore `pikchr.go`
+* Refactor code to remove warning of shadowed variable `iSlot` in `pik_txt_vertical_layout()`
+* Update `go.mod` to Go 1.19
+
+In the future, I will try to follow drh's updates to `pikchr.y`.
+
 # gopikchr: a Go port of pikchr
 
 A direct port of [pikchr.org](https://pikchr.org)'s

@@ -6,7 +6,7 @@ import (
 	"os"
 	"regexp"
 
-	"github.com/gopikchr/gopikchr"
+	"github.com/t73fde/gopikchr"
 )
 
 /* Testing interface
@@ -68,7 +68,7 @@ func main() {
 			fmt.Fprintf(os.Stderr, "%v\n", err)
 			continue
 		}
-		zOut, w, _, err := gopikchr.Convert(string(zIn), options...)
+		zOut, w, _, err := gopikchr.Convert(zIn, options...)
 		if err != nil {
 			exitCode = true
 		}
