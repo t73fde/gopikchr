@@ -16,7 +16,7 @@ func Convert(input []byte, options ...Option) (output []byte, width int, height 
 		o(conf)
 	}
 	var w, h int
-	html := internal.Pikchr(input, conf.class, conf.mFlag, &w, &h)
+	html := internal.Pikchr(input, conf.class, conf.mFlag, "", "", 1.0, &w, &h)
 	if w == -1 {
 		return html, 0, 0, Error
 	}

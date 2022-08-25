@@ -8,6 +8,8 @@ Main changes:
 * Refactor code to remove warning of shadowed variable `iSlot` in `pik_txt_vertical_layout()`
 * Update `go.mod` to Go 1.19
 * Cleanup Go code in pikchr.y to conform a little bit more to gofmt
+* Allow to set SVGs width, height and initial font-scale externally.
+  This allows to use diagrams in a HTML context with more relative scales.
 
 In the future, I will try to follow drh's updates to `pikchr.y`.
 
