@@ -7,6 +7,7 @@ Main changes:
 * Add comment to make "staticcheck" to ignore `pikchr.go`
 * Refactor code to remove warning of shadowed variable `iSlot` in `pik_txt_vertical_layout()`
 * Update `go.mod` to Go 1.19
+* Cleanup Go code in pikchr.y to conform a little bit more to gofmt
 
 In the future, I will try to follow drh's updates to `pikchr.y`.
 
