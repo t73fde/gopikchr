@@ -1,6 +1,9 @@
 # t73fde/gopikchr
 This is a fork of gopikchr/gopikchr to use it within [Zettelstore](https://zettelstore.de).
 
+Many thanks to [@zellyn](https://github.com/zellyn) for the huge task of
+porting pikchr (and lemon) to Go!
+
 Main changes:
 
 * `Convert()` and `internal.Pikchr` use byte slices instead of strings
@@ -12,6 +15,14 @@ Main changes:
   This allows to use diagrams in a HTML context with more relative scales.
 
 In the future, I will try to follow drh's updates to `pikchr.y`.
+All changes up to
+[0ed99dd6c1](https://pikchr.org/home/timeline?bt=5db3aa1d29&p=0ed99dd6c1&y=ci)
+(2022-08-21) are incorporated.
+
+However, lemon updates
+([96a8210609](https://pikchr.org/home/info/96a821060971fe14)) were not ported.
+Therefore there might be differences in the generated code (`pikchr.c` vs.
+`pikchr.go`).
 
 # gopikchr: a Go port of pikchr
 
