@@ -5175,10 +5175,10 @@ func pik_token_length(pToken *PToken, bAllowCodeBlock bool) int {
 		return i
 
 	case '&':
-		for i, ent := range aEntity {
-			if bytencmp(z, aEntity[i].zEntity, len(aEntity[i].zEntity)) == 0 {
+		for _, ent := range aEntity {
+			if bytencmp(z, ent.zEntity, len(ent.zEntity)) == 0 {
 				pToken.eType = uint8(ent.eCode)
-				return len(aEntity[i].zEntity)
+				return len(ent.zEntity)
 			}
 		}
 		pToken.eType = T_ERROR
@@ -5646,7 +5646,13 @@ func islower(b byte) bool {
 }
 
 func bytencmp(a []byte, s string, n int) int {
-	return strings.Compare(string(a[:n]), s)
+	if len(a) >= n {
+		return strings.Compare(string(a[:n]), s)
+	}
+	if strings.Compare(string(a), s) <= 0 {
+		return -1
+	}
+	return 1
 }
 
 func bytesEq(a, b []byte) bool {
