@@ -5861,7 +5861,7 @@ func (p *Pik) pik_elem_new(pId *PToken, pStr *PToken, pSublist PList) *PObj {
  */
 func (p *Pik) pik_find_macro(pId *PToken) *PMacro {
 	for pMac := p.pMacros; pMac != nil; pMac = pMac.pNext {
-		if pMac.macroName.n == pId.n && bytesEq(pMac.macroName.z[:pMac.macroName.n], pId.z[:pId.n]) {
+		if pMac.macroName.n == pId.n && bytes.Equal(pMac.macroName.z[:pMac.macroName.n], pId.z[:pId.n]) {
 			return pMac
 		}
 	}
@@ -6941,7 +6941,7 @@ func (p *Pik) pik_find_byname(pBasis *PObj, pName *PToken) *PObj {
 		pObj := pList[i]
 		for j := 0; j < int(pObj.nTxt); j++ {
 			t := pObj.aTxt[j].n
-			if t == pName.n+2 && bytesEq(pObj.aTxt[j].z[1:t-1], pName.z[:pName.n]) {
+			if t == pName.n+2 && bytes.Equal(pObj.aTxt[j].z[1:t-1], pName.z[:pName.n]) {
 				p.lastRef = pObj
 				return pObj
 			}
@@ -8479,16 +8479,4 @@ func bytencmp(a []byte, s string, n int) int {
 	return 1
 }
 
-func bytesEq(a, b []byte) bool {
-	if len(a) != len(b) {
-		return false
-	}
-	for i, bb := range a {
-		if b[i] != bb {
-			return false
-		}
-	}
-	return true
-}
-
-//line 8259 "pikchr.go"
+//line 8247 "pikchr.go"

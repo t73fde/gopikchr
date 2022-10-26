@@ -13,6 +13,8 @@ Main changes:
 * Cleanup Go code in pikchr.y to conform a little bit more to gofmt
 * Allow to set SVGs width, height and initial font-scale externally.
   This allows to use diagrams in a HTML context with more relative scales.
+* Add fuzzy test (this detected an error in bytencmp)
+* Replace `bytesEq()` with `bytes.Equal()`
 
 In the future, I will try to follow drh's updates to `pikchr.y`.
 All changes up to
