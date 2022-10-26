@@ -15,6 +15,8 @@ Main changes:
   This allows to use diagrams in a HTML context with more relative scales.
 * Add fuzzy test (this detected an error in bytencmp)
 * Replace `bytesEq()` with `bytes.Equal()`
+* Fix panic when stack overflow (need an updated lempar.go.tpl)
+* Add a simple build script
 
 In the future, I will try to follow drh's updates to `pikchr.y`.
 All changes up to
